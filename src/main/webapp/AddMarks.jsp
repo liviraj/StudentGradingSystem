@@ -10,168 +10,52 @@
 <script src="bootstrap.min.js"></script>
 <script src="jquery.min.js"></script>
 
-<title>server registration</title>
+<title>Students mark registration</title>
 <style type="text/css">
 h1{
 		background-color: floralwhite;
 	}
 </style>
 <script>
-var val1=$("#sel1").val();
-if(val1=='' || val1==0)
-	{
- 	$(document).ready(function(){
-  		$('#sel1').val("---select---");
-  		$('#sel2').val("---select---");
-  		$('#sel3').val("---select---");
-  	});
-	}
-else{
-  	$(document).ready(function(){
-  		$('#sel1').val('${details.gender}');
-  		$('#sel2').val('${details.department}');
-  		$('#sel3').val('${details.semester}');
-  	});
+function setMark(subjectId) {
+	var markInput = document.getElementById('mark');
+    var subjectInfoInput = document.getElementsByName('subjectInfo')[0];
+
+    // Set the entered mark in the hidden field value
+    subjectInfoInput.value = subjectInfoInput.value.replace(/,[0-9]+$/, ',' + markInput.value);
 }
-  </script>
-  <script>
-  /* function validate()	
-  {
-	  var name=$("#name").val();
-	  var team=$("#sel1").val();
-	  var place=$("#sel2").val();
-	  var salary=$("#salary").val();
-	  
-	   if(name==null || name=='')
-		  {
-		   	$("#sname").html("Name Requried");
-		  	$("#errname").show();
-		  	$("#errteam").hide();
-		  	$("#errplace").hide();
-		  	$("#errsalary").hide();
-			return false;
-		  	
-		  }
-	  else if (team==null || team=='') {
-		  $("#steam").html("Team Requried");
-		  	$("#errname").hide();
-		  	$("#errteam").show();
-		  	$("#errplace").hide();
-		  	$("#errsalary").hide();
-		  	return false;
-	}
-	  else if(place==null || place==''){
-		  $("#splace").html("place Requried");
-		  $("#errname").hide();
-		  	$("#errteam").hide();
-		  	$("#errplace").show();
-		  	$("#errsalary").hide();
-		  	return false;
-	  }
-	  else if(salary==null || salary==''){
-		  $("#ssalary").html("salary Requried");
-		  $("#errname").hide();
-		  	$("#errteam").hide();
-		  	$("#errplace").hide();
-		  	$("#errsalary").show();
-		  	return false;
-	  }
-	   return true;
-  } */
-  </script>
+</script>
   </head>
 
 <body>
-<form action="StudentController" method="post" name="rform" >
+<form action="StudentMarkController" method="post" name="rform" >
 <center><h1>Student Grading System</h1></center>
 <div class="container">
-<input  type="hidden" name="studentId" value="${details.studentId}">
-	<h2>Student Registration</h2>
-	
-	<div class="col-xs-4">
-	<div>
-	<label>Roll No<span style="color: red">*</span></label><br><span style="color: red">${msg}</span>
-	<div id="errname">
-		<span style="color: red" id="sname"></span>
-	</div>
-	<input id="rollNo" class="form-control" type="text" name="rollNo" value="${details.rollNo}"  placeholder="Enter roll no">
-	<br>
-	
-	<label>Name<span style="color: red">*</span></label><br><span style="color: red">${msg}</span>
-	<div id="errname">
-		<span style="color: red" id="sname"></span>
-	</div>
-	<input id="name" class="form-control" type="text" name="name" value="${details.name}"  placeholder="Enter student name">
-	
-	<br>
-	
-	<label>Date Of Birth<span style="color: red">*</span></label><br><span style="color: red">${msg}</span>
-	<div id="errname">
-		<span style="color: red" id="sname"></span>
-	</div>
-	<input id="dob" class="form-control" type="date" path="dob" class= "date" name="dob" pattern="dd-MM-yyyy"  value="${details.dob}"/>
-	
-	<br>
-	
-	<label>Gender<span style="color: red">*</span></label>
-	<div class="form-group">
-	<div id="errteam">
-		<span style="color: red" id="steam"></span>
-	</div>
-    <select  class="form-control" name="gender" id="sel1"  value="${details.gender}"> 
-        <option value="" hidden>---select---</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-       </select>
-      </div>
-      
-	<br>
-	
-	<label>Father Name<span style="color: red">*</span></label><br><span style="color: red">${msg}</span>
-	<div id="errname">
-		<span style="color: red" id="sname"></span>
-	</div>
-	<input id="fatherName" class="form-control" type="text" name="fatherName" value="${details.fatherName}"  placeholder="Enter father name">
-	
-	<br>
-	
-	<label>Department<span style="color: red">*</span></label>
-	<div class="form-group">
-	<div id="errplace">
-		<span style="color: red" id="splace"></span>
-	</div> 
-        <select  class="form-control" name="department" id="sel2"  value="${details.department}">
-        	<option value="" hidden>---select---</option>																																																																																																																																																																																																																																																																																																											>---select---</option>
-        	<option value="BCA">BCA</option>
-        	<option value="BSc">BSc</option>
-        	<option value="BBA">BBA</option>
-        </select>
-      </div>
-	<br>
-	
-	<label>Semester<span style="color: red">*</span></label>
-	<div class="form-group">
-	<div id="errplace">
-		<span style="color: red" id="splace"></span>
-	</div> 
-        <select  class="form-control" name="semester" id="sel3"  value="${details.semester}">
-        	<option value="" hidden>---select---</option>																																																																																																																																																																																																																																																																																																											>---select---</option>
-        	<option value="1">1</option>
-        	<option value="2">2</option>
-        	<option value="3">3</option>
-        	<option value="4">4</option>
-        	<option value="5">5</option>
-        	<option value="6">6</option>
-        </select>
-      </div>
+	<center>
+	<h2>Enter Mark Details</h2>
+	<label>Student Name: ${student.name}</label><br>
+	<label>RollNo: ${student.rollNo}</label><br>
+	<label>Department: ${student.department}</label>
+	<c:forEach items="${subjectDetails}" var="subjectEntry">
+	<h4>Semester: <c:out value="${subjectEntry.key}"></c:out></h4><br>
+		<table border="3" class="table">
+		 	<c:forEach var="subject" items="${subjectEntry.value}">
+				<tr class="danger">
+					<th>Subject Code: <c:out value="${subject.subjectCode}"></c:out></th>
+					<th>Subject: <c:out value="${subject.subjectName}"></c:out></th>
+					<th>Mark: <input id="mark" class="form-control" type="number" name="mark"  placeholder="Enter the mark" onchange="setMark('${subject.subjectId}')">
+						</th>
+					
+					<input type="hidden" name="subjectInfo" value="${subject.subjectId},${subjectEntry.key},${subject.subjectName},${subject.subjectCode},${student.studentId},${student.department},${subject.mark}">
+				</tr>
+			</c:forEach>
+		</table>
 		<br>
-		<div class="col-xs-2">
-		<input  class="btn btn-info" type="submit" name="submit"  value="${name}" onclick="return validate()"></input>
-		</div>
-      <button  class="btn btn-info" type="reset" style="position: relative;left: 40px">Reset</button>
-      <button  class="btn btn-info" style="position: relative;left: 50px" type="submit" value="Cancel" name="submit">Cancel</button>
-	</div>
-	</div>
+	</c:forEach>
+	<input  class="btn btn-info" type="submit" name="submit"  value="submit"></input>
+	<button  class="btn btn-info" type="reset" style="position: relative;left: 40px">Reset</button>
+      <button  class="btn btn-info" style="position: relative;left: 50px" type="submit" value="cancel" name="submit">Cancel</button>
+	</center>
 	</div>
 </form>
 </body>

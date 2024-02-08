@@ -6,6 +6,7 @@ public class SubjectDetails {
 	private String subjectName;
 	private String department;
 	private int semesterId;
+	private int mark;
 
 	public SubjectDetails() {
 		super();
@@ -50,11 +51,20 @@ public class SubjectDetails {
 	public void setSemesterId(int semesterId) {
 		this.semesterId = semesterId;
 	}
+	
+	
+	public int getMark() {
+		return mark;
+	}
+
+	public void setMark(int mark) {
+		this.mark = mark;
+	}
 
 	@Override
 	public String toString() {
 		return "SubjectDetails [subjectId=" + subjectId + ", subjectCode=" + subjectCode + ", subjectName="
-				+ subjectName + ", department=" + department + ", semesterId=" + semesterId + "]";
+				+ subjectName + ", department=" + department + ", semesterId=" + semesterId + ", mark=" + mark + "]";
 	}
 
 }

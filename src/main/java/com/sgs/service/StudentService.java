@@ -41,7 +41,7 @@ public class StudentService {
 		return studentList;
 	}
 
-	public StudentDetailsModel getServerById(int id) throws ClassNotFoundException {
+	public StudentDetailsModel getStudentById(int id) throws ClassNotFoundException {
 		StudentDetailsModel studentModel = new StudentDetailsModel();
 		try {
 			con = DbConnection.getConnection();

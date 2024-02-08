@@ -11,7 +11,8 @@ public class StudentDetailsModel {
 	private String fatherName;
 	private int semester;
 	private String department;
-
+	private int mark;
+	
 	public StudentDetailsModel() {
 		super();
 	}
@@ -80,11 +81,20 @@ public class StudentDetailsModel {
 	public void setRollNo(String rollNo) {
 		this.rollNo = rollNo;
 	}
+	
+	
+	public int getMark() {
+		return mark;
+	}
+
+	public void setMark(int mark) {
+		this.mark = mark;
+	}
 
 	@Override
 	public String toString() {
 		return "StudentDetailsModel [studentId=" + studentId + ", rollNo=" + rollNo + ", name=" + name + ", dob=" + dob
 				+ ", gender=" + gender + ", fatherName=" + fatherName + ", semester=" + semester + ", department="
-				+ department + "]";
+				+ department + ", mark=" + mark + "]";
 	}
 }

@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sgs.model.MarkDetails;
 import com.sgs.model.StudentDetailsModel;
+import com.sgs.model.SubjectDetails;
+import com.sgs.service.MarksService;
 import com.sgs.service.StudentService;
 
 @WebServlet("/StudentMarkController")
@@ -23,20 +29,44 @@ public class StudentMarkController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String addMarksPage = "AddMarks.jsp";
 	private static final String vieMarksPage = "ViewMarks.jsp";
-
+	private static final String viewStudent = "view_sgs.jsp";
+	
 	RequestDispatcher requestDispatcher = null;
-
+	private StudentService studentService;
+	private MarksService marksService;
 	public StudentMarkController() {
 		super();
+		this.studentService = new StudentService();
+		this.marksService = new MarksService();
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		String check = (String) session.getAttribute("username");
 		String action = request.getParameter("action");
 		String navigation = vieMarksPage;
+		
+		
+		if (action.equals("addMark")) {
+			int studentId = Integer.parseInt(request.getParameter("studentId"));
+			try {
+				StudentDetailsModel student = studentService.getStudentById(studentId);
+				ArrayList<SubjectDetails> subjectDetails = marksService.getSubjectByDepartment(student.getDepartment());
+				 Map<Integer, List<SubjectDetails>> subjectsBySemester = subjectDetails.stream()
+			                .collect(Collectors.groupingBy(SubjectDetails::getSemesterId));
+				
+				request.setAttribute("student", student);
+				request.setAttribute("subjectDetails", subjectsBySemester);
+				navigation = addMarksPage;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(action.equals("viewMark")) {
+			int studentId = Integer.parseInt(request.getParameter("studentId"));
+		}
 		
 		requestDispatcher = request.getRequestDispatcher(navigation);
 		requestDispatcher.forward(request, response);
@@ -48,7 +78,37 @@ public class StudentMarkController extends HttpServlet {
 		HttpSession session = request.getSession();
 		String check = (String) session.getAttribute("username");
 		String action = request.getParameter("submit");
+		String navigation = vieMarksPage;
 		
+		String[] subjectInfoArray = request.getParameterValues("subjectInfo");
+		
+		List<MarkDetails> markDetails = new ArrayList<MarkDetails>();
+		for (String subject : subjectInfoArray) {
+			MarkDetails mark = new MarkDetails();
+			String[] markSplit = subject.split(",");
+			
+			mark.setMark(Integer.parseInt(markSplit[6]));
+			mark.setDepartment(markSplit[5]);
+			mark.setSemesterId(Integer.parseInt(markSplit[1]));
+			mark.setStudentId(Integer.parseInt(markSplit[4]));
+			mark.setSubjectId(Integer.parseInt(markSplit[0]));
+			
+			markDetails.add(mark);
+		}
+		int result = marksService.saveMarkDetails(markDetails);
+		if (result == 1) {
+			navigation = viewStudent;
+		}
+		ArrayList<StudentDetailsModel> studentList = null;
+		try {
+			studentList = studentService.getStudentList();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("details", studentList);
+		request.setAttribute("msg", "record saved successfully");
+		requestDispatcher = request.getRequestDispatcher(navigation);
 		requestDispatcher.forward(request, response);
 	}
 }

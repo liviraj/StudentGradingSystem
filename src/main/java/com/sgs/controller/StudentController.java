@@ -53,7 +53,7 @@ public class StudentController extends HttpServlet {
 				StudentDetailsModel studentModel = new StudentDetailsModel();
 				int studentId = Integer.parseInt(request.getParameter("studentId"));
 				try {
-					studentModel = serverService.getServerById(studentId);
+					studentModel = serverService.getStudentById(studentId);
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				}
