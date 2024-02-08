@@ -68,10 +68,6 @@ h1{
 				<td><c:out value="${detail.fatherName}"></c:out></td>
 				<td><c:out value="${detail.semester}"></c:out></td>
 				<td><c:out value="${detail.department}"></c:out></td>
-				<td><a href="StudentController?action=update&studentId=<c:out value="${detail.studentId}"/>"><button>Update</button></a>
-			 <a><button onclick="msg1(${detail.studentId})">Delete</button></a>
-			 <a><button onclick="addMarks(${detail.studentId})">Add Marks</button></a>
-			 <a><button onclick="viewMarks(${detail.studentId})">View Marks</button></a></td> 
 			</tr>
 			</c:forEach>
 			</table></center></div>

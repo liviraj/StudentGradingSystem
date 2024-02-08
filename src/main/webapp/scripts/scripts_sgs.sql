@@ -2,6 +2,14 @@ create database sgs;
 
 use sgs;
 
+CREATE TABLE `sgs`.`login` (
+  `loginId` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(255) NULL,
+  `password` VARCHAR(255) NULL,
+  PRIMARY KEY (`loginId`));
+  
+INSERT INTO `sgs`.`login` (`username`, `password`) VALUES ('admin', 'admin');
+
 CREATE TABLE `sgs`.`studentdetails` (
   `studentId` INT NOT NULL AUTO_INCREMENT,
   `rollNo` VARCHAR(45) NULL,
@@ -17,7 +25,7 @@ CREATE TABLE `sgs`.`subjectdetails` (
   `subjectId` INT NOT NULL AUTO_INCREMENT,
   `subjectCode` VARCHAR(45) NULL,
   `subjectName` VARCHAR(255) NULL,
-  `departmnetId` VARCHAR(255) NULL,
+  `departmnet` VARCHAR(255) NULL,
   `semesterId` INT NULL,
   PRIMARY KEY (`subjectId`));
 
@@ -43,11 +51,10 @@ CREATE TABLE `sgs`.`markdetails` (
     ON UPDATE NO ACTION);
     
 --- insert student details
-INSERT INTO `sgs`.`studentdetails` (`name`, `dob`, `gender`, `fatherName`, `semster`, `department`) VALUES ('Raj', '2000-03-07', 'Male', 'Selvem', '6', 'BCA');
-INSERT INTO `sgs`.`studentdetails` (`name`, `dob`, `gender`, `fatherName`, `semster`, `department`) VALUES ('Ram', '2000-11-11', 'Male', 'Murugan', '2', 'BSc');
-INSERT INTO `sgs`.`studentdetails` (`name`, `dob`, `gender`, `fatherName`, `semster`, `department`) VALUES ('Rose', '2000-04-18', 'Female', 'Sivam', '5', 'BBA');
-INSERT INTO `sgs`.`studentdetails` (`name`, `dob`, `gender`, `fatherName`, `semster`, `department`) VALUES ('Priya', '2000-05-20', 'Female', 'Samy', '6', 'BCA');
-
+INSERT INTO `sgs`.`studentdetails` (`name`, `dob`, `gender`, `fatherName`, `semester`, `department`) VALUES ('Raj', '2000-03-07', 'Male', 'Selvem', '6', 'BCA');
+INSERT INTO `sgs`.`studentdetails` (`name`, `dob`, `gender`, `fatherName`, `semester`, `department`) VALUES ('Ram', '2000-11-11', 'Male', 'Murugan', '2', 'BSc');
+INSERT INTO `sgs`.`studentdetails` (`name`, `dob`, `gender`, `fatherName`, `semester`, `department`) VALUES ('Rose', '2000-04-18', 'Female', 'Sivam', '5', 'BBA');
+INSERT INTO `sgs`.`studentdetails` (`name`, `dob`, `gender`, `fatherName`, `semester`, `department`) VALUES ('Priya', '2000-05-20', 'Female', 'Samy', '6', 'BCA');
 
 --- insert subject details
 INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BCA0601', 'Java', 'BCA', '6');

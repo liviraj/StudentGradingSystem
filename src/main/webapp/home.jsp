@@ -16,7 +16,7 @@ h1{
 </style>
 </head>
 
-<body background="student.jpg">
+<body background="student.jpeg">
 <center><h1>Student Grading System</h1></center>
 <div class="container">
 <div class="panel panel-success">
