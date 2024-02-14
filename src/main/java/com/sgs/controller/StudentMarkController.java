@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sgs.model.MarkDetails;
+import com.sgs.model.MarkViewModel;
 import com.sgs.model.StudentDetailsModel;
 import com.sgs.model.SubjectDetails;
 import com.sgs.service.MarksService;
@@ -66,6 +67,10 @@ public class StudentMarkController extends HttpServlet {
 			}
 		} else if(action.equals("viewMark")) {
 			int studentId = Integer.parseInt(request.getParameter("studentId"));
+			List<MarkViewModel> studentMarks = marksService.findMarksByStudentId(studentId);
+			navigation = vieMarksPage;
+			request.setAttribute("marks", studentMarks);
+			
 		}
 		
 		requestDispatcher = request.getRequestDispatcher(navigation);

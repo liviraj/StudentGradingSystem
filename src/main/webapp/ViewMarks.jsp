@@ -15,23 +15,6 @@ h1{
 <script src="bootstrap.min.js"></script>
 <script src="jquery.min.js"></script>
 <script>
-	function msg1(id){
-		var idValue = id;
-		var c=confirm("Are You Sure");
-		if(c==true)
-			{
-				location.href="StudentController?action=delete&studentId="+idValue; 
-			}/* else{
-				location.reload();
-			} */
-		
-	}
-	
-	function addMarks(id){
-		var idValue = id;	
-		location.href="StudentMarkController?action=addMark&studentId="+idValue; 
-	}
-	
 	function viewMarks(id){
 		var idValue = id;	
 		location.href="StudentMarkController?action=viewMark&studentId="+idValue; 
@@ -42,7 +25,7 @@ h1{
 <div class="container">
 <center><h1>Student Grading System</h1></center>
 	
-	<center><p><font size="5">Student Information</font></p></center>
+	<center><p><font size="5">Student Marks Information</font></p></center>
 	<center><span style="color: red">${msg} </span></center>
 	<form action="LogoutController">
 				<input type="submit" name="submit" value="logout" style="position:relative; left: 1000px" class="btn btn-danger">
@@ -50,24 +33,17 @@ h1{
 	<input type="hidden" name="confirm" id="confirm" value=""></input>
 	<center><table border="3" class="table">
 		<tr class="danger">
-		<th>Roll No</th>
-		<th>Name</th>
-		<th>Date Of Birth</th>
-		<th>Gender</th>
-		<th>Father Name</th>
-		<th>Semester</th>
 		<th>Department</th>
-		<th colspan="1"><a href="StudentController?action=add">Add New</a></th>
+		<th>Semester</th>
+		<th>Subject</th>
+		<th>Mark</th>
 		</tr>
-			<c:forEach items="${details}" var="detail">
+			<c:forEach items="${marks}" var="mark">
 			<tr>
-				<td><c:out value="${detail.rollNo}"></c:out></td>
-				<td><c:out value="${detail.name}"></c:out></td>
-				<td><c:out value="${detail.dob}"></c:out></td>
-				<td><c:out value="${detail.gender}"></c:out></td>
-				<td><c:out value="${detail.fatherName}"></c:out></td>
-				<td><c:out value="${detail.semester}"></c:out></td>
-				<td><c:out value="${detail.department}"></c:out></td>
+				<td><c:out value="${marks.department}"></c:out></td>
+				<td><c:out value="${marks.semesterId}"></c:out></td>
+				<td><c:out value="${marks.dob}"></c:out></td>
+				<td><c:out value="${marks.gender}"></c:out></td>
 			</tr>
 			</c:forEach>
 			</table></center></div>

@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.sgs.dbconnection.DbConnection;
 import com.sgs.model.MarkDetails;
+import com.sgs.model.MarkViewModel;
 import com.sgs.model.StudentDetailsModel;
 import com.sgs.model.SubjectDetails;
 
@@ -61,6 +62,35 @@ public class MarksService {
 			e.printStackTrace();
 		}
 		return status;
+	}
+	
+	public List<MarkViewModel> findMarksByStudentId(int studentId) {
+		List<MarkViewModel> markViewList = new ArrayList<MarkViewModel>();
+		try {
+			String sql = "select distinct stdD.rollNo, stdD.name, stdD.department, subD.semesterId, md.mark, subD.subjectName\r\n"
+					+ " from markdetails md, subjectdetails subD, studentdetails stdD \r\n"
+					+ " where md.studentId = stdD.studentId and\r\n"
+					+ " subD.subjectId = md.subjectId and\r\n"
+					+ " stdD.studentid = '" + studentId + "';";
+			
+			con = DbConnection.getConnection();
+			st = (Statement) con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next()) {
+				MarkViewModel markViewModel = new MarkViewModel();
+				markViewModel.setRollNo(rs.getString("rollNo"));
+				markViewModel.setName(rs.getString("name"));
+				markViewModel.setDepartment(rs.getString("department"));
+				markViewModel.setSemesterId(rs.getInt("semesterId"));
+				markViewModel.setMark(rs.getInt("mark"));
+				markViewModel.setSubjectName(rs.getString("subjectName"));
+				
+				markViewList.add(markViewModel);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return markViewList;
 	}
 
 }
