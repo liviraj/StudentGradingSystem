@@ -31,10 +31,11 @@ public class StudentMarkController extends HttpServlet {
 	private static final String addMarksPage = "AddMarks.jsp";
 	private static final String vieMarksPage = "ViewMarks.jsp";
 	private static final String viewStudent = "view_sgs.jsp";
-	
+
 	RequestDispatcher requestDispatcher = null;
 	private StudentService studentService;
 	private MarksService marksService;
+
 	public StudentMarkController() {
 		super();
 		this.studentService = new StudentService();
@@ -44,35 +45,52 @@ public class StudentMarkController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession();
 		String check = (String) session.getAttribute("username");
 		String action = request.getParameter("action");
 		String navigation = vieMarksPage;
-		
-		
+
 		if (action.equals("addMark")) {
 			int studentId = Integer.parseInt(request.getParameter("studentId"));
 			try {
 				StudentDetailsModel student = studentService.getStudentById(studentId);
 				ArrayList<SubjectDetails> subjectDetails = marksService.getSubjectByDepartment(student.getDepartment());
-				 Map<Integer, List<SubjectDetails>> subjectsBySemester = subjectDetails.stream()
-			                .collect(Collectors.groupingBy(SubjectDetails::getSemesterId));
-				
+				Map<Integer, List<SubjectDetails>> subjectsBySemester = subjectDetails.stream()
+						.collect(Collectors.groupingBy(SubjectDetails::getSemesterId));
+
 				request.setAttribute("student", student);
 				request.setAttribute("subjectDetails", subjectsBySemester);
 				navigation = addMarksPage;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(action.equals("viewMark")) {
+		} else if (action.equals("viewMark")) {
 			int studentId = Integer.parseInt(request.getParameter("studentId"));
 			List<MarkViewModel> studentMarks = marksService.findMarksByStudentId(studentId);
-			navigation = vieMarksPage;
-			request.setAttribute("marks", studentMarks);
+
+			int sumOfMarks = studentMarks.stream().mapToInt(MarkViewModel::getMark).sum();
+			float percentage = sumOfMarks/studentMarks.size();
+			float cgpa = (float) (percentage/ 9.5);
+			String formattedCgpa = String.format("%.2f", cgpa);
 			
+			navigation = vieMarksPage;
+			request.setAttribute("percentage", percentage);
+			request.setAttribute("cgpa", formattedCgpa);
+			request.setAttribute("marks", studentMarks);
+
+		} else if (action.equals("cancel")) {
+			ArrayList<StudentDetailsModel> studentModel = new ArrayList<StudentDetailsModel>();
+			StudentService studentService = new StudentService();
+			try {
+				studentModel = studentService.getStudentList();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("details", studentModel);
+			navigation = viewStudent;
 		}
-		
+
 		requestDispatcher = request.getRequestDispatcher(navigation);
 		requestDispatcher.forward(request, response);
 	}
@@ -84,35 +102,48 @@ public class StudentMarkController extends HttpServlet {
 		String check = (String) session.getAttribute("username");
 		String action = request.getParameter("submit");
 		String navigation = vieMarksPage;
-		
-		String[] subjectInfoArray = request.getParameterValues("subjectInfo");
-		
-		List<MarkDetails> markDetails = new ArrayList<MarkDetails>();
-		for (String subject : subjectInfoArray) {
-			MarkDetails mark = new MarkDetails();
-			String[] markSplit = subject.split(",");
-			
-			mark.setMark(Integer.parseInt(markSplit[6]));
-			mark.setDepartment(markSplit[5]);
-			mark.setSemesterId(Integer.parseInt(markSplit[1]));
-			mark.setStudentId(Integer.parseInt(markSplit[4]));
-			mark.setSubjectId(Integer.parseInt(markSplit[0]));
-			
-			markDetails.add(mark);
-		}
-		int result = marksService.saveMarkDetails(markDetails);
-		if (result == 1) {
+
+		if (action.equals("cancel")) {
+			ArrayList<StudentDetailsModel> studentModel = new ArrayList<StudentDetailsModel>();
+			StudentService studentService = new StudentService();
+			try {
+				studentModel = studentService.getStudentList();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("details", studentModel);
 			navigation = viewStudent;
+		} else if (action.equals("submit")) {
+			String[] subjectInfoArray = request.getParameterValues("subjectInfo");
+
+			List<MarkDetails> markDetails = new ArrayList<MarkDetails>();
+			for (String subject : subjectInfoArray) {
+				MarkDetails mark = new MarkDetails();
+				String[] markSplit = subject.split(",");
+
+				mark.setMark(Integer.parseInt(markSplit[6]));
+				mark.setDepartment(markSplit[5]);
+				mark.setSemesterId(Integer.parseInt(markSplit[1]));
+				mark.setStudentId(Integer.parseInt(markSplit[4]));
+				mark.setSubjectId(Integer.parseInt(markSplit[0]));
+
+				markDetails.add(mark);
+			}
+			int result = marksService.saveMarkDetails(markDetails);
+			if (result == 1) {
+				navigation = viewStudent;
+			}
+			ArrayList<StudentDetailsModel> studentList = null;
+			try {
+				studentList = studentService.getStudentList();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("details", studentList);
+			request.setAttribute("msg", "record saved successfully");
 		}
-		ArrayList<StudentDetailsModel> studentList = null;
-		try {
-			studentList = studentService.getStudentList();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		request.setAttribute("details", studentList);
-		request.setAttribute("msg", "record saved successfully");
+
 		requestDispatcher = request.getRequestDispatcher(navigation);
 		requestDispatcher.forward(request, response);
 	}

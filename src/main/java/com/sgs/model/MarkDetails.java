@@ -5,7 +5,7 @@ public class MarkDetails {
 	private int studentId;
 	private int semesterId;
 	private String department;
-	private String subjectName;
+	private int subjectId;
 	private int mark;
 
 	public MarkDetails() {
@@ -44,12 +44,12 @@ public class MarkDetails {
 		this.department = department;
 	}
 
-	public String getSubjectName() {
-		return subjectName;
+	public int getSubjectId() {
+		return subjectId;
 	}
 
-	public void setSubjectName(String subjectName) {
-		this.subjectName = subjectName;
+	public void setSubjectId(int subjectId) {
+		this.subjectId = subjectId;
 	}
 
 	public int getMark() {
@@ -63,9 +63,7 @@ public class MarkDetails {
 	@Override
 	public String toString() {
 		return "MarkDetails [markId=" + markId + ", studentId=" + studentId + ", semesterId=" + semesterId
-				+ ", department=" + department + ", subjectName=" + subjectName + ", mark=" + mark + "]";
+				+ ", department=" + department + ", subjectId=" + subjectId + ", mark=" + mark + "]";
 	}
-
-	
 
 }

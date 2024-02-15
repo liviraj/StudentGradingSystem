@@ -17,9 +17,15 @@ h1{
 	}
 </style>
 <script>
-function setMark(subjectId) {
-	var markInput = document.getElementById('mark');
-    var subjectInfoInput = document.getElementsByName('subjectInfo')[0];
+function setMark(subjectId, counterInIndex, counterOutIndex) {
+    var markInput = document.getElementById('mark'+ subjectId);
+    var subjectInfoInputs = document.getElementsByName('subjectInfo');
+    
+    // Calculate the current position of subjectInfo in the array
+    var currentPosition = parseInt(counterOutIndex) * ${subjectDetails.size()} + parseInt(counterInIndex);
+
+    // Use the calculated position to get the specific subjectInfo input
+    var subjectInfoInput = subjectInfoInputs[currentPosition];
 
     // Set the entered mark in the hidden field value
     subjectInfoInput.value = subjectInfoInput.value.replace(/,[0-9]+$/, ',' + markInput.value);
@@ -36,14 +42,14 @@ function setMark(subjectId) {
 	<label>Student Name: ${student.name}</label><br>
 	<label>RollNo: ${student.rollNo}</label><br>
 	<label>Department: ${student.department}</label>
-	<c:forEach items="${subjectDetails}" var="subjectEntry">
+	<c:forEach items="${subjectDetails}" var="subjectEntry" varStatus="counterOut">
 	<h4>Semester: <c:out value="${subjectEntry.key}"></c:out></h4><br>
 		<table border="3" class="table">
-		 	<c:forEach var="subject" items="${subjectEntry.value}">
+		 	<c:forEach var="subject" items="${subjectEntry.value}" varStatus="counter">
 				<tr class="danger">
 					<th>Subject Code: <c:out value="${subject.subjectCode}"></c:out></th>
 					<th>Subject: <c:out value="${subject.subjectName}"></c:out></th>
-					<th>Mark: <input id="mark" class="form-control" type="number" name="mark"  placeholder="Enter the mark" onchange="setMark('${subject.subjectId}')">
+					<th>Mark: <input id="mark${subject.subjectId}" class="form-control" type="number" name="mark${subject.subjectId}"  placeholder="Enter the mark" onchange="setMark('${subject.subjectId}', '${counter.index}','${counterOut.index}')">
 						</th>
 					
 					<input type="hidden" name="subjectInfo" value="${subject.subjectId},${subjectEntry.key},${subject.subjectName},${subject.subjectCode},${student.studentId},${student.department},${subject.mark}">
