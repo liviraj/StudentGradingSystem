@@ -148,6 +148,7 @@ public class StudentController extends HttpServlet {
 
 				int semester = Integer.parseInt(request.getParameter("semester"));
 				String department = request.getParameter("department");
+				String completedYear = request.getParameter("completedYear");
 
 				studentModel.setName(serverName);
 				studentModel.setGender(gender);
@@ -156,6 +157,7 @@ public class StudentController extends HttpServlet {
 				studentModel.setSemester(semester);
 				studentModel.setDepartment(department);
 				studentModel.setRollNo(rollNo);
+				studentModel.setCompletedYear(completedYear);
 
 				String result = studentService.rollNoCheck(rollNo);
 				arrayList.add(studentModel);
@@ -223,6 +225,7 @@ public class StudentController extends HttpServlet {
 
 				int semester = Integer.parseInt(request.getParameter("semester"));
 				String department = request.getParameter("department");
+				String completedYear = request.getParameter("completedYear");
 				
 				studentModel.setStudentId(id);
 				studentModel.setName(serverName);
@@ -232,6 +235,7 @@ public class StudentController extends HttpServlet {
 				studentModel.setSemester(semester);
 				studentModel.setDepartment(department);
 				studentModel.setRollNo(rollNo);
+				studentModel.setCompletedYear(completedYear);
 				try {
 					int status = studentService.updateServer(studentModel);
 				} catch (ClassNotFoundException e) {

@@ -32,7 +32,8 @@ public class StudentService {
 				studentModel.setDob(rs.getDate("dob"));
 				studentModel.setSemester(rs.getInt("semester"));
 				studentModel.setDepartment(rs.getString("department"));
-
+				studentModel.setCompletedYear(rs.getString("completedYear"));
+				
 				studentList.add(studentModel);
 			}
 		} catch (SQLException e) {
@@ -57,6 +58,7 @@ public class StudentService {
 				studentModel.setDob(rs.getDate("dob"));
 				studentModel.setSemester(rs.getInt("semester"));
 				studentModel.setDepartment(rs.getString("department"));
+				studentModel.setCompletedYear(rs.getString("completedYear"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -90,6 +92,7 @@ public class StudentService {
 				studentModel.setDob(rs.getDate("dob"));
 				studentModel.setSemester(rs.getInt("semester"));
 				studentModel.setDepartment(rs.getString("department"));
+				studentModel.setCompletedYear(rs.getString("completedYear"));
 				
 				studentList.add(studentModel);
 			}
@@ -104,7 +107,7 @@ public class StudentService {
 		try {
 			con = DbConnection.getConnection();
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(
-					"insert into studentdetails(rollNo,name,dob,gender,fatherName,semester,department) values(?,?,?,?,?,?,?)");
+					"insert into studentdetails(rollNo,name,dob,gender,fatherName,semester,department, completedYear) values(?,?,?,?,?,?,?,?)");
 			ps.setString(1, studentModel.getRollNo());
 			ps.setString(2, studentModel.getName());
 			ps.setDate(3, studentModel.getDob());
@@ -112,6 +115,7 @@ public class StudentService {
 			ps.setString(5, studentModel.getFatherName());
 			ps.setInt(6, studentModel.getSemester());
 			ps.setString(7, studentModel.getDepartment());
+			ps.setString(8, studentModel.getCompletedYear());
 
 			status = ps.executeUpdate();
 		} catch (Exception e) {
@@ -125,7 +129,7 @@ public class StudentService {
 		try {
 			con = DbConnection.getConnection();
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(
-					"update studentdetails set rollNo=?,name=?,dob=?,gender=?,fatherName=?,semester=?, department=?  where studentId='"
+					"update studentdetails set rollNo=?,name=?,dob=?,gender=?,fatherName=?,semester=?, department=?, completedYear=?  where studentId='"
 							+ studentModel.getStudentId() + "'");
 			ps.setString(1, studentModel.getRollNo());
 			ps.setString(2, studentModel.getName());
@@ -134,6 +138,7 @@ public class StudentService {
 			ps.setString(5, studentModel.getFatherName());
 			ps.setInt(6, studentModel.getSemester());
 			ps.setString(7, studentModel.getDepartment());
+			ps.setString(8, studentModel.getCompletedYear());
 			status = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

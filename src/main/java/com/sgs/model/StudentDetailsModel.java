@@ -12,6 +12,7 @@ public class StudentDetailsModel {
 	private int semester;
 	private String department;
 	private int mark;
+	private String completedYear;
 	
 	public StudentDetailsModel() {
 		super();
@@ -90,11 +91,20 @@ public class StudentDetailsModel {
 	public void setMark(int mark) {
 		this.mark = mark;
 	}
+	
+	
+	public String getCompletedYear() {
+		return completedYear;
+	}
+
+	public void setCompletedYear(String completedYear) {
+		this.completedYear = completedYear;
+	}
 
 	@Override
 	public String toString() {
 		return "StudentDetailsModel [studentId=" + studentId + ", rollNo=" + rollNo + ", name=" + name + ", dob=" + dob
 				+ ", gender=" + gender + ", fatherName=" + fatherName + ", semester=" + semester + ", department="
-				+ department + ", mark=" + mark + "]";
+				+ department + ", mark=" + mark + ", completedYear=" + completedYear + "]";
 	}
 }

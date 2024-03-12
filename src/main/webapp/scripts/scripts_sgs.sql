@@ -116,4 +116,8 @@ INSERT INTO `sgs`.`markdetails` (`studentId`, `semesterId`, `department`, `subje
 INSERT INTO `sgs`.`markdetails` (`studentId`, `semesterId`, `department`, `subjectId`, `mark`) VALUES ('3', '5', 'BBA', '6', '60');
 
 
+--- New 12/03/2024
+ALTER TABLE `sgs`.`studentdetails` 
+ADD COLUMN `completedYear` VARCHAR(45) NULL AFTER `department`;
+
 

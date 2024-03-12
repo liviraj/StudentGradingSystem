@@ -165,6 +165,20 @@ else{
         </select>
       </div>
 		<br>
+		<label>Pass-Out Year<span style="color: red">*</span></label>
+	<div class="form-group">
+	<div id="errplace">
+		<span style="color: red" id="splace"></span>
+	</div> 
+        <select  class="form-control" name="semester" id="sel3"  value="${details.completedYear}">
+        	<option value="" hidden>---select---</option>																																																																																																																																																																																																																																																																																																											>---select---</option>
+        	<option value="2020">2020</option>
+        	<option value="2021">2021</option>
+        	<option value="2022">2022</option>
+        	<option value="2023">2023</option>
+        </select>
+      </div>
+		<br>
 		<div class="col-xs-2">
 		<input  class="btn btn-info" type="submit" name="submit"  value="${name}" onclick="return validate()"></input>
 		</div>

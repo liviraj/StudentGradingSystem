@@ -11,8 +11,7 @@ public class DbConnection {
 	private static final String className="com.mysql.jdbc.Driver";
 	private static final String url="jdbc:mysql://localhost:3306/sgs";
 	private static final String root="root";
-	private static String password="Historaj@007";
-	// private static final String password="Javaraj@007";
+	private static String password="Java@2024";
 
 	public static Connection getConnection() throws ClassNotFoundException , SQLException{
 		try{		
