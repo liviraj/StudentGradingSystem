@@ -10,7 +10,7 @@
 <script src="bootstrap.min.js"></script>
 <script src="jquery.min.js"></script>
 
-<title>server registration</title>
+<title>Student Grading System</title>
 <style type="text/css">
 h1{
 		background-color: floralwhite;
@@ -170,7 +170,7 @@ else{
 	<div id="errplace">
 		<span style="color: red" id="splace"></span>
 	</div> 
-        <select  class="form-control" name="semester" id="sel3"  value="${details.completedYear}">
+        <select  class="form-control" name="completedYear" id="sel3"  value="${details.completedYear}">
         	<option value="" hidden>---select---</option>																																																																																																																																																																																																																																																																																																											>---select---</option>
         	<option value="2020">2020</option>
         	<option value="2021">2021</option>

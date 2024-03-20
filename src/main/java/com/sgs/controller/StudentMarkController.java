@@ -120,7 +120,10 @@ public class StudentMarkController extends HttpServlet {
 			for (String subject : subjectInfoArray) {
 				MarkDetails mark = new MarkDetails();
 				String[] markSplit = subject.split(",");
-
+				
+				if (markSplit[6] == null || Integer.parseInt(markSplit[6]) == 0 || Integer.parseInt(markSplit[6]) <=0 ) {
+					continue;
+				}
 				mark.setMark(Integer.parseInt(markSplit[6]));
 				mark.setDepartment(markSplit[5]);
 				mark.setSemesterId(Integer.parseInt(markSplit[1]));

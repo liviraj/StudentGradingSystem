@@ -68,8 +68,11 @@ public class StudentService {
 
 	public int deleteServer(int id) throws ClassNotFoundException, SQLException {
 		int status = 0;
+		String deleteMarks = "delete from markdetails where studentId=" + id + "";
 		String query = "delete from studentdetails where studentId=" + id + "";
 		con = DbConnection.getConnection();
+		PreparedStatement psDelete = (PreparedStatement) con.prepareStatement(deleteMarks);
+		int marksDelStatus = psDelete.executeUpdate();
 		PreparedStatement ps = (PreparedStatement) con.prepareStatement(query);
 		status = ps.executeUpdate();
 		return status;

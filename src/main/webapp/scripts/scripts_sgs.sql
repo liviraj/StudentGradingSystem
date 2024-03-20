@@ -63,12 +63,6 @@ INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, 
 INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BCA0604', 'Artificial Intelegence', 'BCA', '6');
 INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BCA0605', 'Lab-Java', 'BCA', '6');
 INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BCA0606', 'Lab-Photshop', 'BCA', '6');
-INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0501', 'Finacce Management', 'BBA', '5');
-INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0502', 'Marketing Principles', 'BBA', '5');
-INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0503', 'Digital Marketing', 'BBA', '5');
-INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0504', 'E-Commerce', 'BBA', '5');
-INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0505', 'International Business', 'BBA', '5');
-INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0506', 'Tour and Travel Management', 'BBA', '5');
 INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BCA0101', 'Programming in C', 'BCA', '1');
 INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BCA0102', 'PC Applications and Internet Technology', 'BCA', '1');
 INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BCA0103', 'Programming Language through C', 'BCA', '1');
@@ -100,6 +94,73 @@ INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, 
 INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BCA0505', 'Artificial Intelligence', 'BCA', '5');
 INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BCA0506', 'Internet and e-Commerce', 'BCA', '4');
 
+-- BBA Subject Details Insert
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0101', 'Tamil-1', 'BBA', '1');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0102', 'Foundation in English-I', 'BBA', '1');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0103', 'Principles of Management', 'BBA', '1');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0104', 'Financial Accounting', 'BBA', '1');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0105', 'Managerial Economics', 'BBA', '1');
+
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0201', 'Tamil-2', 'BBA', '2');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0202', 'Foundation in English-II ', 'BBA', '2');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0203', 'Business Organisation', 'BBA', '2');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0204', 'Management Accounting', 'BBA', '2');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0205', 'Business Statistics', 'BBA', '2');
+
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0301', 'Business Communication', 'BBA', '3');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0302', 'Organisational Behaviour', 'BBA', '3');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0303', 'Financial Management', 'BBA', '3');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0304', 'Marketing Management', 'BBA', '3');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0305', 'Quantitative Methods', 'BBA', '3');
+
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0401', 'Business Environment', 'BBA', '4');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0402', 'Human Resource Management', 'BBA', '4');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0403', 'Operations Management', 'BBA', '4');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0404', 'Computer Applications in Bussiness', 'BBA', '4');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0405', 'Environmental Studies', 'BBA', '4');
+
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0601', 'Money and Banking', 'BBA', '6');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0602', 'International Business', 'BBA', '6');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0603', 'Financial Market and Services', 'BBA', '6');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0604', 'Introduction to Retailing', 'BBA', '6');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BBA0605', 'E-Business', 'BBA', '6');
+
+-- BSc Subject Details Insert
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0101', 'Java', 'BSc', '1');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0102', 'Digital Processing', 'BSc', '1');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0103', 'Photoshop', 'BSc', '1');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0104', 'Artificial Intelegence', 'BSc', '1');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0105', 'Lab-Java', 'BSc', '1');
+                                                                                                      
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0201', 'Programming in C', 'BSc', '2');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0202', 'PC Applications and Internet Technology', 'BSc', '2');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0203', 'Programming Language through C', 'BSc', '2');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0204', 'Digital Computer Fundamentals', 'BSc', '2');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0205', 'Introduction to Information Technology', 'BSc', '2');
+                                                                                                       
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0301', 'Personality and Soft Skills Development', 'BSc', '3');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0302', 'Mathematics – II (Discrete Mathematics)', 'BSc', '3');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0303', 'Data Structure using C', 'BSc', '3');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0304', 'System Analysis and Design', 'BSc', '3');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0305', 'Accounting and Financial Management ', 'BSc', '3');
+                                                                                                       
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0401', 'Management Information Systems', 'BSc', '4');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0402', 'Mathematics – III (Numerical Analysis)', 'BSc', '4');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0403', 'Operating Systems', 'BSc', '4');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0404', 'Object-Oriented Programming in C++', 'BSc', '4');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0405', 'Computer Organization and Architecture', 'BSc', '4');
+                                                                                                      
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0501', 'Environment and Ecology', 'BSc', '5');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0502', 'Database Management Systems', 'BSc', '5');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0503', 'Computer Networking', 'BSc', '5');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0504', 'Software Engineering', 'BSc', '5');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0505', 'GUI Programming', 'BSc', '5');
+                                                                                                      
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0601', 'Operation Research', 'BSc', '6');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0602', 'Theory of Computing', 'BSc', '6');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0603', 'Fundamentals of TCP/IP', 'BSc', '6');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0604', 'IT Acts and Cyber Laws', 'BSc', '6');
+INSERT INTO `sgs`.`subjectdetails` (`subjectCode`, `subjectName`, `departmnet`, `semesterId`) VALUES ('BSc0605', 'Artificial Intelligence', 'BSc', '6');
 
 -- Mark Details insert
 INSERT INTO `sgs`.`markdetails` (`studentId`, `semesterId`, `department`, `subjectId`, `mark`) VALUES ('1', '6', 'BCA', '1', '66');
